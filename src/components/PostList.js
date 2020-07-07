@@ -19,12 +19,14 @@ function PostList(props) {
           id={post.id}
           key={post.id} />
       })}
+      {}
     </React.Fragment>
   );
 }
 
 PostList.propTypes = {
   postList: PropTypes.object,
+  fixedPostList: PropTypes.array,
   onPostSelection: PropTypes.func,
 };
 

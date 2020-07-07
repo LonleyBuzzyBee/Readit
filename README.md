@@ -6,7 +6,7 @@
 
 ## Diagram of components
 
-[![ diagram of components](./public/diagram.png)]
+![diagram of components](./public/diagram.png)
 
 ## Description
 

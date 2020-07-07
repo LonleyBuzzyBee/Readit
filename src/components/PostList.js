@@ -19,14 +19,27 @@ function PostList(props) {
           id={post.id}
           key={post.id} />
       })}
-      {}
-    </React.Fragment>
-  );
-}
+</React.Fragment> 
+      )}
+
+    /* {props.fixedPostList.map((post, index) =>
+      <Post whenPostClicked={props.onPostSelection}
+      postTitle={post.postTitle}
+      bookTitle={post.bookTitle}
+      category={post.category}
+      userName={post.userName}
+      timeStamp={post.timeStamp}
+      likes={post.likes}
+      dislikes={post.dislikes}
+      id={post.id}
+      key={post.id} />
+    )}
+    </React.Fragment> */
+
 
 PostList.propTypes = {
   postList: PropTypes.object,
-  fixedPostList: PropTypes.array,
+  // fixedPostList: PropTypes.array,
   onPostSelection: PropTypes.func,
 };
 

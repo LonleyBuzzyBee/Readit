@@ -88,16 +88,16 @@ class PostControl extends React.Component {
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-if (this.state.selectedPost != null) {
+    if (this.state.selectedPost != null) {
       currentlyVisibleState =
-        <PostDetail
-        post={this.state.selectedPost} />
+      <PostDetail
+      post={this.state.selectedPost} />
       buttonText = "Return to Post List";
     } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList} />;
       buttonText = "Return to Post List";
     } else {
-      currentlyVisibleState = <PostList fixedPostList = {this.state.postList} ticketList={this.props.masterPostList} onPostSelection={this.handleChangingSelectedPost} />;
+      currentlyVisibleState = <PostList postList={this.state.postList} onPostSelection={this.handleChangingSelectedPost} />;
       buttonText = "Add Post";
     }
     return (
@@ -110,3 +110,6 @@ if (this.state.selectedPost != null) {
 }
 
 export default PostControl;
+
+
+//fixedPostList = {this.state.postList} 

@@ -13,9 +13,10 @@ _This app was created as a platform for users to share thoughts, ideas and every
 
 | Behavior | Input | Output |
 |---|---|---|
-|   |   |   |
-|   |   |   |
-|   |   |   |
+|the user is able to see landing page | the user opens the app | the main page is showing |
+| a user is able to navigate to new posts forum | the user clicks all forums button| the user sees a forum posts list |
+| the user is able to add a new post to the forum | user clicks a create new post button | the new post is displayed in the forum post list |
+|the user is able to see the details of a post |the user clicks a details button| additional info for the post is displayed|
 
 ## Setup/Installation Requirements
 

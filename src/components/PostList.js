@@ -10,7 +10,7 @@ function PostList(props) {
         return <Post
           whenPostClicked={props.onPostSelection}
           postTitle={post.postTitle}
-          title={post.title}
+          bookTitle={post.bookTitle}
           category={post.category}
           userName={post.userName}
           timeStamp={post.timeStamp}
@@ -25,7 +25,7 @@ function PostList(props) {
 
 PostList.propTypes = {
   postList: PropTypes.object,
-  onPostSelection: PropTypes.func
+  onPostSelection: PropTypes.func,
 };
 
 export default PostList;

@@ -6,7 +6,7 @@ function PostDetail(props){
 
   return (
     <React.Fragment>
-       <h3>{post.postTitle} - {post.title}</h3>
+       <h3>{post.postTitle} - {post.bookTitle}</h3>
         <h5>Genre: {post.category}</h5>
         <h5>Posted by {post.userName} on {post.timeStamp}</h5>
         <h6>Likes: {post.likes} Dislikes: {post.dislikes}</h6>

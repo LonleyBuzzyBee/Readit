@@ -41,6 +41,7 @@ class PostControl extends React.Component {
       const action = {
         type: 'TOGGLE_FORM'
       }
+      dispatch(action)
     } else if (this.props.formVisibleOnPage === 'add-post' || this.props.formVisibleOnPage === 'landing-page'){
       const { dispatch } = this.props;
       const action = {
@@ -105,13 +106,14 @@ class PostControl extends React.Component {
       currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList} />;
       buttonText = "Return to Post List";
       buttonClick = this.handleClick; 
+      button2 = <button onClick= {this.landingPageClick}>Return Home</button>
 
     } else if (this.props.formVisibleOnPage === "post-list") {
       currentlyVisibleState = <PostList 
       postList={this.props.masterPostList} 
       onPostSelection={this.handleChangingSelectedPost} />;
       buttonText = "Add Post";
-      buttonClick = this.handleClick
+      buttonClick = this.handleClickAddPost;
       button2 = <button onClick= {this.landingPageClick}>Return Home</button>
     }
     return (

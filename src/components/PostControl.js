@@ -32,6 +32,22 @@ class PostControl extends React.Component {
     dispatch(action);
   }
 
+  sortByTimeClick = () => {
+    const { dispatch } = this.props;
+    const action = {
+      type: 'SORT_BY_TIME'
+    }
+    dispatch(action);
+  }
+
+  sortByLikesClick = () => {
+    const { dispatch } = this.props;
+    const action = {
+      type: 'SORT_BY_LIKES'
+    }
+    dispatch(action);
+  }
+
   handleClick = () => {
     if (this.state.selectedPost != null) {
       this.setState({
@@ -78,7 +94,7 @@ class PostControl extends React.Component {
   handleChangingSelectedPost = (id) => {
     const selectedPost = this.props.masterPostList[id]
     this.setState({ selectedPost: selectedPost });
-    console.log(selectedPost);
+    // console.log(selectedPost);
   }
 
   // methods go here
@@ -91,7 +107,9 @@ class PostControl extends React.Component {
     let buttonText = null;
     let buttonClick = null;
     let button2 = null;
-    console.log(this.props.masterPostList);
+    let sortButton1 = null;
+    let sortButton2 = null;
+    // console.log(this.props.masterPostList);
     if (this.state.selectedPost != null) {
       currentlyVisibleState =
         <PostDetail
@@ -114,15 +132,20 @@ class PostControl extends React.Component {
       currentlyVisibleState = <PostList
         postList={this.props.masterPostList}
         onPostSelection={this.handleChangingSelectedPost} />;
+      sortButton1 = <button onClick={this.sortByTimeClick}>Sort by Post Date</button>
+      sortButton2 = <button onClick={this.sortByLikesClick}>Sort by Popularity</button>
       buttonText = "Add Post";
       buttonClick = this.handleClickAddPost;
       button2 = <button onClick={this.landingPageClick}>Return Home</button>
     }
     return (
       <React.Fragment>
+        {sortButton1}
+        {sortButton2}
         {currentlyVisibleState}
         <button onClick={buttonClick}>{buttonText}</button>
         {button2}
+
       </React.Fragment>
     );
   }

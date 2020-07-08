@@ -5,7 +5,7 @@ import Post from "./Post";
 function PostList(props) {
   return (
     <React.Fragment>
-      <hr/>
+      <hr />
       {Object.values(props.postList).map((post) => {
         return <Post
           whenPostClicked={props.onPostSelection}
@@ -19,28 +19,13 @@ function PostList(props) {
           id={post.id}
           key={post.id} />
       })}
-    </React.Fragment> 
-    )}
-
-    /* {props.fixedPostList.map((post, index) =>
-      <Post whenPostClicked={props.onPostSelection}
-      postTitle={post.postTitle}
-      bookTitle={post.bookTitle}
-      category={post.category}
-      userName={post.userName}
-      timeStamp={post.timeStamp}
-      likes={post.likes}
-      dislikes={post.dislikes}
-      id={post.id}
-      key={post.id} />
-    )}
-    </React.Fragment> */
-
+    </React.Fragment>
+  )
+};
 
 PostList.propTypes = {
   postList: PropTypes.object,
-  // fixedPostList: PropTypes.array,
   onPostSelection: PropTypes.func,
-};
+}
 
 export default PostList;

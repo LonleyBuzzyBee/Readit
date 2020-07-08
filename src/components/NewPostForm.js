@@ -27,7 +27,7 @@ function NewPostForm(props){
         />
         <input
           type = 'text'
-          name = 'bootTitle'
+          name = 'bookTitle'
           placeholder = 'Book Title'
         />
         <input

@@ -19,8 +19,8 @@ function PostList(props) {
           id={post.id}
           key={post.id} />
       })}
-</React.Fragment> 
-      )}
+    </React.Fragment> 
+    )}
 
     /* {props.fixedPostList.map((post, index) =>
       <Post whenPostClicked={props.onPostSelection}

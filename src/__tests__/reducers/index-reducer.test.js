@@ -45,7 +45,7 @@ describe("rootReducer", () => {
 
 
   test('Check that initial state of ticketListReducer matches root reducer', () => {
-  const action = {
+    const action = {
       type: 'ADD_POST',
       postTitle: 'Dragons are so cool',
       bookTitle: 'Eragon',

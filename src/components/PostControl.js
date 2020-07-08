@@ -67,6 +67,24 @@ class PostControl extends React.Component {
     }
   }
 
+  // handleLiking = (id) => {
+  //   const newScoopedFlavor = this.state.masterFlavorList.filter(flavor => flavor.id === id)[0];
+  //   const flavorIndex = this.state.masterFlavorList.indexOf(newScoopedFlavor);
+  //   if (newScoopedFlavor.scoops >= 1) {
+  //     const newScoopsNum = newScoopedFlavor.scoops - 1;
+  //     let editedMasterFlavorList = this.state.masterFlavorList
+  //       .filter(flavor => flavor.id != newScoopedFlavor.id);
+  //     editedMasterFlavorList.splice(flavorIndex, 0, { ...newScoopedFlavor, scoops: newScoopsNum });
+  //     this.setState({
+  //       masterFlavorList: editedMasterFlavorList,
+  //     })
+  //   }
+  // }
+  // the "handle" method here should just change action type - the code that actually increments the "likes" property
+  //should be in the reducer where state can be accessed more directly - rather than making this handler method parallel to the handleScooping
+  //it should be more parallel to handleAddingNewPost or the sort methods
+
+
 
   handleAddingNewPostToList = (newPost) => {
     const { dispatch } = this.props;
@@ -97,7 +115,7 @@ class PostControl extends React.Component {
     // console.log(selectedPost);
   }
 
-  // methods go here
+  // methods go here 
   //handleaddingnewpost
 
   //handleclick for likes and dislikes

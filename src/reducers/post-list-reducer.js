@@ -63,12 +63,34 @@ export default (state = {
       let objectSortByTime = { ...sortByTime }
       return objectSortByTime;
 
+    case "SORT_BY_LIKES":
+      let sortByLikes =
+        Object.values(state).sort(function (a, b) {
+          return b.likes - a.likes;
+        })
+      console.log(sortByLikes);
+      let objectSortByLikes = { ...sortByLikes }
+      return objectSortByLikes;
+
+    case "LIKE":
+      return Object.assign({}, state, {
+        [id]: {
+          bookTitle: bookTitle,
+          postTitle: postTitle,
+          userName: userName,
+          category: category,
+          timeStamp: timeStamp,
+          content: content,
+          likes: likes + 1,
+          dislikes: dislikes,
+          id: id
+        }
+      })
+
+    case "DISLIKE":
+
     default: return state;
 
   }
 };
 
-    //const returnedTarget = Object.assign(target, source);
-    // return state;
-    //Wed Jul 08 2020 14:44:47 GMT-0700 (Pacific Daylight Time)
-    // case "SORT_BY_LIKES":

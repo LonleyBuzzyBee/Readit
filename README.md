@@ -33,9 +33,15 @@ _To Download:_
 * On Mac: ```open -a {your text editor} Readit```
 * On Windows: ```Readit```
 * Once you're in the ```Readit``` project directory, do the command "npm install"
-*
-*
 
+## To Do List - Tomorrow
+- Get functionality (methods) written for 'SelectingPost' (on div click)
+- Add functionality to view fixed post list and newMaster list
+- Test addPost functionality
+- Add Form button -> doesn't currently show us our form (root reducer & App.js update)
+- Buttons to see post list on landing page & post detail page
+- Sort method for timestamps to show most recent posts first. 
+//landingpage needs to be shown first in render or reducer?
 
 ## Known Bugs
 

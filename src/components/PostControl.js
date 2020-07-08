@@ -17,7 +17,7 @@ class PostControl extends React.Component {
   }
 
   landingPageClick = () => {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     const action = {
       type: 'LANDING_PAGE'
     }
@@ -27,7 +27,7 @@ class PostControl extends React.Component {
   handleClickAddPost = () => {
     const { dispatch } = this.props;
     const action = {
-      type: 'ADD_POST'
+      type: 'SEE_FORM'
     }
     dispatch(action);
   }
@@ -39,18 +39,18 @@ class PostControl extends React.Component {
       });
       const { dispatch } = this.props;
       const action = {
-        type: 'TOGGLE_FORM'
+        type: 'POST_LIST'
       }
       dispatch(action)
-    } else if (this.props.formVisibleOnPage === 'add-post' || this.props.formVisibleOnPage === 'landing-page'){
+    } else if (this.props.formVisibleOnPage === 'see-form' || this.props.formVisibleOnPage === 'landing-page') {
       const { dispatch } = this.props;
       const action = {
-        type: 'TOGGLE_FORM'
+        type: 'POST_LIST'
       }
       dispatch(action);
     }
   }
-  
+
 
   handleAddingNewPostToList = (newPost) => {
     const { dispatch } = this.props;
@@ -67,21 +67,23 @@ class PostControl extends React.Component {
       likes: likes,
       dislikes: dislikes,
     }
+    console.log(newPost);
     dispatch(action);
     const action2 = {
-      type: 'TOGGLE_FORM'
+      type: 'POST_LIST'
     }
     dispatch(action2);
   }
 
   handleChangingSelectedPost = (id) => {
     const selectedPost = this.props.masterPostList[id]
-    this.setState({ selectedPost : selectedPost })
+    this.setState({ selectedPost: selectedPost });
+    console.log(selectedPost);
   }
-  
+
   // methods go here
   //handleaddingnewpost
-  
+
   //handleclick for likes and dislikes
 
   render() {
@@ -89,11 +91,11 @@ class PostControl extends React.Component {
     let buttonText = null;
     let buttonClick = null;
     let button2 = null;
-
+    console.log(this.props.masterPostList);
     if (this.state.selectedPost != null) {
       currentlyVisibleState =
-      <PostDetail
-      post={this.state.selectedPost} />
+        <PostDetail
+          post={this.state.selectedPost} />
       buttonText = "Return to Post List";
       buttonClick = this.handleClick;
 
@@ -102,24 +104,25 @@ class PostControl extends React.Component {
       buttonText = "See All Posts"
       buttonClick = this.handleClick;
     }
-      else if (this.props.formVisibleOnPage === "add-post") {
+    else if (this.props.formVisibleOnPage === "see-form") {
       currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList} />;
       buttonText = "Return to Post List";
-      buttonClick = this.handleClick; 
-      button2 = <button onClick= {this.landingPageClick}>Return Home</button>
+      buttonClick = this.handleClick;
+      button2 = <button onClick={this.landingPageClick}>Return Home</button>
 
     } else if (this.props.formVisibleOnPage === "post-list") {
-      currentlyVisibleState = <PostList 
-      postList={this.props.masterPostList} 
-      onPostSelection={this.handleChangingSelectedPost} />;
+      currentlyVisibleState = <PostList
+        postList={this.props.masterPostList}
+        onPostSelection={this.handleChangingSelectedPost} />;
       buttonText = "Add Post";
       buttonClick = this.handleClickAddPost;
-      button2 = <button onClick= {this.landingPageClick}>Return Home</button>
+      button2 = <button onClick={this.landingPageClick}>Return Home</button>
     }
     return (
       <React.Fragment>
         {currentlyVisibleState}
         <button onClick={buttonClick}>{buttonText}</button>
+        {button2}
       </React.Fragment>
     );
   }

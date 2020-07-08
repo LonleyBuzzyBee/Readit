@@ -7,7 +7,7 @@ content: 'Im baby retro DIY gentrify, cronut banh mi messenger bag trust fund si
 timeStamp: '7/7/2020 @ 2:55pm',
 likes: 60,
 dislikes: 3,
-id: 1 },
+id: "1" },
 2: { postTitle: 'Do not waste your time',
 bookTitle: 'Middlemarch',
 category: 'classics',
@@ -16,7 +16,7 @@ content: 'I thought this book would be romantic, like Jane Austen, but its not, 
 timeStamp: '6/8/20 @ 12:15pm',
 likes: 30,
 dislikes: 3,
-id: 2},
+id: "2" },
 3: { postTitle: 'This book rulez',
 bookTitle: 'Do No Harm - Henry Marsh',
 category: 'Biography',
@@ -25,10 +25,10 @@ content: 'Lumbersexual letterpress adaptogen 3 wolf moon la croix plaid YOLO blo
 timeStamp: '07/04/20 @ 10:15am',
 likes: 17,
 dislikes: 5,
-id: 3 } 
+id: "3"} 
 }, action) => {
 
-  const { bookTitle, postTitle, userName, category, timeStamp, content, likes, dislikes, id } = action;
+  const { bookTitle, postTitle, userName, category, timeStamp, content, likes, dislikes, id} = action;
 
   switch (action.type) {
     case "ADD_POST":
@@ -42,9 +42,11 @@ id: 3 }
           content: content,
           likes: likes,
           dislikes: dislikes,
-          id: id,
+          id: id
         },
       });
+    // case "LIKE": 
+      
 
       default: return state;
     

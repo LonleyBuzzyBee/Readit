@@ -2,14 +2,14 @@
 
 export default (state = "landing-page", action) => {
   switch (action.type) {
-    case "TOGGLE_FORM":
+    case "POST_LIST":
       state = "post-list"
       return state;
     case "LANDING_PAGE":
       state = "landing-page"
       return state;
-    case "ADD_POST":
-      state = "add-post"
+    case "SEE_FORM":
+      state = "see-form"
       return state; 
     default:
       return state;

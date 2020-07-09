@@ -9,8 +9,6 @@ function PostList(props) {
       {Object.values(props.postList).map((post) => {
         return <Post
           whenPostClicked={props.onPostSelection}
-          whenPostLiked={props.onLiking}
-          whenPostDisliked={props.onDisliking}
           postTitle={post.postTitle}
           bookTitle={post.bookTitle}
           category={post.category}
@@ -28,9 +26,7 @@ function PostList(props) {
 
 PostList.propTypes = {
   postList: PropTypes.object,
-  onPostSelection: PropTypes.func,
-  onLiking: PropTypes,
-  onDisliking: PropTypes
+  onPostSelection: PropTypes.func
 }
 
 export default PostList;

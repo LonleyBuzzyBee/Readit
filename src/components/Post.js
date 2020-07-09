@@ -10,8 +10,6 @@ function Post(props) {
         <h5>Posted by {props.userName} on {props.timeStamp}</h5>
         <h6>Likes: {props.likes} Dislikes: {props.dislikes}</h6>
       </div>
-      <button onClick={props.whenPostLiked(props.id)}>Like!</button>
-      <button onClick={props.whenPostDisliked(props.id)}>Dislike!</button>
       <hr />
     </React.Fragment>
   );
@@ -27,8 +25,7 @@ Post.propTypes = {
   dislikes: PropTypes.number,
   id: PropTypes.string,
   whenPostClicked: PropTypes.func,
-  whenPostLiked: PropTypes.func,
-  whenPostDisliked: PropTypes.func
+
 };
 
 export default Post;

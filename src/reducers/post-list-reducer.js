@@ -1,5 +1,5 @@
 export default (state = {
-  1: {
+  "1": {
     postTitle: 'Dragons are so cool',
     bookTitle: 'Eragon',
     category: 'Fantasy',
@@ -10,7 +10,7 @@ export default (state = {
     dislikes: 3,
     id: "1"
   },
-  2: {
+  "2": {
     postTitle: 'Do not waste your time',
     bookTitle: 'Middlemarch',
     category: 'classics',
@@ -21,7 +21,7 @@ export default (state = {
     dislikes: 3,
     id: "2"
   },
-  3: {
+  "3": {
     postTitle: 'This book rulez',
     bookTitle: 'Do No Harm - Henry Marsh',
     category: 'Biography',
@@ -59,16 +59,23 @@ export default (state = {
           b = Date.parse(b.timeStamp)
           return b - a;
         })
-      console.log(sortByTime);
-      let objectSortByTime = { ...sortByTime }
-      return objectSortByTime;
+      console.log("sort by time:", sortByTime);
+
+      let newObject = {}
+      sortByTime.forEach(function(item){
+        newObject = {...newObject, [`"${item.id}"`]: {...item}}
+      });
+
+      console.log("new object:", newObject);
+      // let objectSortByTime = { ...sortByTime }  
+      return newObject;
 
     case "SORT_BY_LIKES":
       let sortByLikes =
         Object.values(state).sort(function (a, b) {
           return b.likes - a.likes;
         })
-      console.log(sortByLikes);
+      console.log("sort by likes: ", sortByLikes);
       let objectSortByLikes = { ...sortByLikes }
       return objectSortByLikes;
 
@@ -88,6 +95,19 @@ export default (state = {
       })
 
     case "DISLIKE":
+      return Object.assign({}, state, {
+        [id]: {
+          bookTitle: bookTitle,
+          postTitle: postTitle,
+          userName: userName,
+          category: category,
+          timeStamp: timeStamp,
+          content: content,
+          likes: likes,
+          dislikes: dislikes + 1,
+          id: id
+        }
+      })
 
     default: return state;
 

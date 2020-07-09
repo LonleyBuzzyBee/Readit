@@ -67,24 +67,48 @@ class PostControl extends React.Component {
     }
   }
 
-  // handleLiking = (id) => {
-  //   const newScoopedFlavor = this.state.masterFlavorList.filter(flavor => flavor.id === id)[0];
-  //   const flavorIndex = this.state.masterFlavorList.indexOf(newScoopedFlavor);
-  //   if (newScoopedFlavor.scoops >= 1) {
-  //     const newScoopsNum = newScoopedFlavor.scoops - 1;
-  //     let editedMasterFlavorList = this.state.masterFlavorList
-  //       .filter(flavor => flavor.id != newScoopedFlavor.id);
-  //     editedMasterFlavorList.splice(flavorIndex, 0, { ...newScoopedFlavor, scoops: newScoopsNum });
-  //     this.setState({
-  //       masterFlavorList: editedMasterFlavorList,
-  //     })
-  //   }
-  // }
-  // the "handle" method here should just change action type - the code that actually increments the "likes" property
-  //should be in the reducer where state can be accessed more directly - rather than making this handler method parallel to the handleScooping
-  //it should be more parallel to handleAddingNewPost or the sort methods
+  likingPostClick = (post) => {
+    const { id, postTitle, bookTitle, category, userName, content, timeStamp, likes, dislikes } = post;
+    const { dispatch } = this.props;
+    const action = {
+      type: 'LIKE',
+      id: id,
+      postTitle: postTitle,
+      bookTitle: bookTitle,
+      category: category,
+      userName: userName,
+      content: content,
+      timeStamp: timeStamp,
+      likes: likes,
+      dislikes: dislikes,
+    }
+    dispatch(action);
+    this.setState({selectedPost: null})
+  }
 
+  dislikingPostClick = (post) => {
+    const { id, postTitle, bookTitle, category, userName, content, timeStamp, likes, dislikes } = post;
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DISLIKE',
+      id: id,
+      postTitle: postTitle,
+      bookTitle: bookTitle,
+      category: category,
+      userName: userName,
+      content: content,
+      timeStamp: timeStamp,
+      likes: likes,
+      dislikes: dislikes,
+    }
+    dispatch(action);
+    this.setState({selectedPost: null})
 
+    // const action2 = {
+    //   type: ''
+    // }
+    // dispatch(action2);
+  }
 
   handleAddingNewPostToList = (newPost) => {
     const { dispatch } = this.props;
@@ -110,8 +134,23 @@ class PostControl extends React.Component {
   }
 
   handleChangingSelectedPost = (id) => {
-    const selectedPost = this.props.masterPostList[id]
+    // id = parseInt(id);
+    // const selectedPost = (this.props.masterPostList).filter(post => post.id === id)[0];
+    const filterObject = (obj, filter, filterValue) => 
+      Object.keys(obj).reduce((acc, val) => 
+      (obj[val][filter] === filterValue ? acc : {
+          ...acc,
+          [val]: obj[val]
+      }                                        
+      ), {});
+    const selectedPost = filterObject(this.props.masterPostList, id, id)
+
+    // const selectedPost = this.props.masterPostList[id]
+    console.log('master post list', this.props.masterPostList)
+    console.log('id:',id)
+    console.log('selected post: ', selectedPost)
     this.setState({ selectedPost: selectedPost });
+
     // console.log(selectedPost);
   }
 
@@ -128,10 +167,14 @@ class PostControl extends React.Component {
     let sortButton1 = null;
     let sortButton2 = null;
     // console.log(this.props.masterPostList);
+    // if (this.props.formVisibleOnPage === "post-detail") {
     if (this.state.selectedPost != null) {
       currentlyVisibleState =
         <PostDetail
-          post={this.state.selectedPost} />
+          post={this.state.selectedPost}
+          onLiking = {this.likingPostClick}
+          onDisliking = {this.dislikingPostClick}
+           />
       buttonText = "Return to Post List";
       buttonClick = this.handleClick;
 
@@ -174,6 +217,7 @@ PostControl.propTypes = {
 };
 
 const mapStateToProps = state => {
+
   return {
     masterPostList: state.masterPostList,
     formVisibleOnPage: state.formVisibleOnPage
